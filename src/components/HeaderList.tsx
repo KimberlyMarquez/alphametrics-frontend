@@ -10,7 +10,7 @@ export default function HeaderList() {
           </h1>
         </div>
         <hr />
-        <div id="select-zona" className="col-lg-3 w-auto row d-flex align-items-center">
+        <div id="select-zona" className="col-lg-3 w-auto row d-flex align-items-center mt-4">
           <button id="add-btn" className="btn col-2 mx-3">Nueva Persona</button>
           <select
             name="zone"

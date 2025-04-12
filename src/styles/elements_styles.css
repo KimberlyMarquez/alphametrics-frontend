@@ -61,3 +61,20 @@ tfoot:last-child td {
     height: fit-content;
   }
 }
+
+#add-btn{
+  background-color: #4E5282;
+  color: white;
+  border: 3px solid #4E5282;
+  font-weight: bold;
+  height: 40px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#add-btn:hover{
+  color: #4E5282;
+  background-color: white;
+}

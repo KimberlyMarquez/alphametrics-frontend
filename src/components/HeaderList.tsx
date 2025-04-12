@@ -10,13 +10,24 @@ export default function HeaderList() {
           </h1>
         </div>
         <hr />
-        <div id="select-zona" className="col-lg-3 w-auto row">
-          <select name="zone" id="zone" className="col-2 offset-6" style={{height:"30px"}}>
+        <div id="select-zona" className="col-lg-3 w-auto row d-flex align-items-center">
+          <button id="add-btn" className="btn col-2 mx-3">Nueva Persona</button>
+          <select
+            name="zone"
+            id="zone"
+            className="col-2 offset-4"
+            style={{ height: "30px" }}
+          >
             <option value="">Zona 1</option>
           </select>
-          <select name="population" id="population" className="col-2 offset-1" >
+          <select
+            name="population"
+            id="population"
+            className="col-2 offset-1"
+            style={{ height: "30px" }}
+          >
             <option value="">Poblacion 1</option>
-            </select>
+          </select>
         </div>
       </div>
     </>

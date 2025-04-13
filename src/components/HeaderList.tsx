@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllZones, getPopulations } from "../api/PersonAPI";
 import { Zone, Population } from "my-types";
+import { Link } from "react-router-dom";
 
 type Props = {
   setCurrPop: (id: number) => void;
@@ -59,9 +60,11 @@ export default function HeaderList({ setCurrPop, currPop }: Props) {
           id="select-zona"
           className="col-lg-3 w-auto row d-flex align-items-center mt-4"
         >
-          <button id="add-btn" className="btn col-2 mx-3">
+          <Link to={"/new_person"} className="btn col-2 mx-3">
+          <button id="add-btn" className="btn w-100">
             Nueva Persona
           </button>
+          </Link>
           <select
             name="zone"
             id="zone"

@@ -9,4 +9,14 @@ declare module "my-types" {
     gender: string;
     status: boolean;
   }
+  export interface Zone {
+    id: number;
+    name: string;
+    state: string;
+  }
+
+  export interface Population {
+    id: number;
+    age: number;
+  }
 }

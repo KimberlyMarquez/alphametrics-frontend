@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import { getAllZones, getPopulations } from "../api/PersonAPI";
 import { Zone, Population } from "my-types";
 
-export default function HeaderList() {
+type Props = {
+  setCurrPop: (id: number) => void;
+  currPop: number;
+};
+
+export default function HeaderList({ setCurrPop, currPop }: Props) {
   const [zones, setZones] = useState<Zone[]>([]);
   const [populations, setPopulations] = useState<Population[]>([]);
   const [selectedZone, setSelectedZone] = useState<number | string>("");
@@ -76,6 +81,10 @@ export default function HeaderList() {
             name="population"
             id="population"
             className="col-2 offset-1"
+            value={currPop}
+            onChange={(e) => {
+              setCurrPop(Number(e.target.value));
+            }}
             style={{ height: "30px" }}
           >
             {populations.map((population, index) => (

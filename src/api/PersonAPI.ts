@@ -34,3 +34,25 @@ export const getPopulations = async (zoneId: number) => {
     return [];
   }
 };
+
+export const getPeopleByPopulation = async (populationId: number) => {
+  try {
+    const res = await api.get("person/getpeoplebygroup", {
+      params: { populationId },
+    });
+    return res.data.payload;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const deletePerson = async (id: number) => {
+  try {
+    const res = await api.delete(`/person/${id}`);
+    return res.data;
+  } catch (error) {
+    console.error("Error al eliminar persona:", error);
+    return;
+  }
+};

@@ -2,9 +2,10 @@ import { Person } from "my-types";
 
 type Props = {
   people: Person[];
+  onDelete: (id: number) => void;
 };
 
-export default function List({ people }: Props) {
+export default function List({ people, onDelete }: Props) {
   return (
     <>
       <div id="tabla" className="offset-1 mt-5 me-5">
@@ -24,23 +25,43 @@ export default function List({ people }: Props) {
             {people.map((people, index) => (
               <tr className="" key={index}>
                 <th scope="row">{people.id}</th>
-                <td>{`${people.first_name} ${people.second_name} ${people.first_lastname} ${people.second_lastname}`}</td>
+                <td>
+                  {[
+                    people.first_name,
+                    people.second_name !== "null" ? people.second_name : "",
+                    people.first_lastname,
+                    people.second_lastname,
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                </td>
+
                 <td>{people.curp}</td>
                 <td>{people.gender}</td>
                 <td>{people.status ? "Graduado" : "No Graduado"}</td>
                 <th scope="row">
-                  <a href="#">
+                  <button
+                    style={{ border: "0", backgroundColor: "transparent" }}
+                    onClick={() => {
+                      onDelete(people.id);
+                    }}
+                  >
                     <img
                       src="img/trash_icon.png"
                       alt="delete"
                       id="delete-icon"
                     />
-                  </a>
+                  </button>
                 </th>
                 <th scope="row">
-                  <a href="#">
+                  <button
+                    style={{ border: "0", backgroundColor: "transparent" }}
+                    onClick={() => {
+                      onDelete(people.id);
+                    }}
+                  >
                     <img src="img/edit_icon.png" alt="edit" id="edit-icon" />
-                  </a>
+                  </button>
                 </th>
               </tr>
             ))}

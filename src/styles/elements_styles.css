@@ -9,7 +9,7 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow: auto;
 }
 
 #main {
@@ -60,4 +60,21 @@ tfoot:last-child td {
   div div aside {
     height: fit-content;
   }
+}
+
+#add-btn{
+  background-color: #4E5282;
+  color: white;
+  border: 3px solid #4E5282;
+  font-weight: bold;
+  height: 40px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#add-btn:hover{
+  color: #4E5282;
+  background-color: white;
 }

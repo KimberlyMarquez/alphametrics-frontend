@@ -43,10 +43,7 @@ export default function HeaderDashboard({
       if (data.length > 0) {
         setCurrPop(data[0].id);
         setCurrentPopulation(data[0]);
-      } else {
-        setCurrentPopulation(null);
       }
-
       const zone = zones.find((z) => z.id === Number(selectedZoneId));
       if (zone) {
         setCurrentZone(zone);

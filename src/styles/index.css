@@ -9,11 +9,11 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   box-sizing: border-box;
-  overflow: auto; /* Aseguramos que el body permita desplazamiento */
+  overflow: auto;
 }
 
 #main {
-  overflow-y: auto; /* Ajuste para evitar que el contenido quede debajo de la navbar fija */
+  overflow-y: auto;
 }
 
 label {
@@ -72,16 +72,16 @@ tfoot:last-child td {
 }
 
 @media (min-width: 992px) {
-  main{
+  main {
     margin-left: 275px;
   }
   aside {
-    height: 100vh; /* La barra de navegación ocupará toda la altura de la ventana */
-    position: fixed; /* Fija la navbar en el lado izquierdo */
+    height: 100vh;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 250px; /* Ajustamos el ancho de la navbar */
-    z-index: 1000; /* Para asegurarnos de que esté sobre el contenido */
+    width: 250px;
+    z-index: 1000;
     padding: 10px 0;
   }
 
@@ -114,6 +114,10 @@ tfoot:last-child td {
     width: 100%;
     z-index: 1000;
     padding: 10px 0;
+  }
+
+  main {
+    margin-top: 200px !important;
   }
 }
 

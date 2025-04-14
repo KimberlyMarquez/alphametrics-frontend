@@ -1,5 +1,5 @@
 import api from ".";
-import { Person, Zone } from "my-types";
+import { Person, Population, Zone } from "my-types";
 
 export const getAllPeople = async () => {
   try {
@@ -54,5 +54,25 @@ export const deletePerson = async (id: number) => {
   } catch (error) {
     console.error("Error al eliminar persona:", error);
     return;
+  }
+};
+
+export const createPerson = async (newPerson: any) => {
+  try {
+    const res = await api.post("/person", newPerson);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAllPopulations = async () => {
+  try {
+    const res = await api.get("/person/getallpopulations");
+    const populations: Population[] = res.data.payload;
+    return populations;
+  } catch (error) {
+    console.log(error);
+    return [];
   }
 };

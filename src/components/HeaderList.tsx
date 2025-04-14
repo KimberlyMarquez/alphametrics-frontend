@@ -61,9 +61,9 @@ export default function HeaderList({ setCurrPop, currPop }: Props) {
           className="col-lg-3 w-auto row d-flex align-items-center mt-4"
         >
           <Link to={"/new_person"} className="btn col-2 mx-3">
-          <button id="add-btn" className="btn w-100">
-            Nueva Persona
-          </button>
+            <button id="add-btn" className="btn w-100">
+              Nueva Persona
+            </button>
           </Link>
           <select
             name="zone"
@@ -94,7 +94,7 @@ export default function HeaderList({ setCurrPop, currPop }: Props) {
               <option
                 key={index}
                 value={population.id}
-              >{`Zona: ${population.id}, Edad: ${population.age} anios`}</option>
+              >{`ID: ${population.id}, Edad: ${population.age} anios`}</option>
             ))}
           </select>
         </div>

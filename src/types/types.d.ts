@@ -18,5 +18,6 @@ declare module "my-types" {
   export interface Population {
     id: number;
     age: number;
+    zone: Zone;
   }
 }

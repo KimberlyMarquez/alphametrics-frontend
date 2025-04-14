@@ -12,6 +12,16 @@ export const getAllPeople = async () => {
   }
 };
 
+export const getPerson = async (id: number) => {
+  try {
+    const response = await api.get(`/person/${id}`);
+    const person: Person = response.data.payload;
+    return person;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getAllZones = async () => {
   try {
     const res = await api.get("/person/getallzones");
@@ -74,5 +84,14 @@ export const getAllPopulations = async () => {
   } catch (error) {
     console.log(error);
     return [];
+  }
+};
+
+export const updatePerson = async (id: number, personData) => {
+  try {
+    const res = await api.patch(`/person/${id}`, personData);
+    return res.data;
+  } catch (error) {
+    console.log(error);
   }
 };

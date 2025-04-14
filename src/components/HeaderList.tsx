@@ -62,7 +62,7 @@ export default function HeaderList({ setCurrPop, currPop }: Props) {
         >
           <Link to={"/new_person"} className="btn col-2 mx-3">
             <button id="add-btn" className="btn w-100">
-              Nueva Persona
+              Nuevo Evaluado
             </button>
           </Link>
           <select

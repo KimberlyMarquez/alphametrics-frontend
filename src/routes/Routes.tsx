@@ -3,6 +3,7 @@ import App from "../App";
 import ListPerson from "../components/ListPerson";
 import Error from "../components/Error";
 import NewElement from "../components/NewElement";
+import EditElement from "../components/EditElement";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,12 @@ const router = createBrowserRouter([
         path: "/new_person",
         element: <NewElement />,
         errorElement: <Error />,
-      }
+      },
+      {
+        path: "/edit_person/:id",
+        element: <EditElement />,
+        errorElement: <Error />,
+      },
     ],
     errorElement: <Error />,
   },

@@ -1,4 +1,5 @@
 import { Person } from "my-types";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   people: Person[];
@@ -6,6 +7,8 @@ type Props = {
 };
 
 export default function List({ people, onDelete }: Props) {
+  const navigate = useNavigate();
+
   return (
     <>
       <div id="tabla" className="offset-1 mt-5 me-5">
@@ -56,9 +59,7 @@ export default function List({ people, onDelete }: Props) {
                 <th scope="row">
                   <button
                     style={{ border: "0", backgroundColor: "transparent" }}
-                    onClick={() => {
-                      onDelete(people.id);
-                    }}
+                    onClick={ () => navigate(`/edit_person/${people.id}`)}
                   >
                     <img src="img/edit_icon.png" alt="edit" id="edit-icon" />
                   </button>

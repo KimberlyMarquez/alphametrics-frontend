@@ -5,13 +5,17 @@ import Error from "../components/Error";
 import NewElement from "../components/NewElement";
 import EditElement from "../components/EditElement";
 
+import Dashboard from "../pages/Dashboard";
+
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/dashboard",
     element: <App />,
+    errorElement: <Error />,
     children: [
       {
         index: true,
+        element: <Dashboard />
       },
       {
         path: "/people",
@@ -29,7 +33,6 @@ const router = createBrowserRouter([
         errorElement: <Error />,
       },
     ],
-    errorElement: <Error />,
   },
 ]);
 

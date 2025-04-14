@@ -1,47 +1,92 @@
 import { useEffect, useState } from "react";
 import { getAllZones, getPopulations } from "../api/PersonAPI";
 import { Zone, Population } from "my-types";
-import { Link } from "react-router-dom";
 
 type Props = {
   setCurrPop: (id: number) => void;
   currPop: number;
+  onSelectionUpdate?: (
+    zone: Zone | null,
+    population: Population | null
+  ) => void;
 };
 
-export default function HeaderList({ setCurrPop, currPop }: Props) {
+export default function HeaderDashboard({
+  setCurrPop,
+  currPop,
+  onSelectionUpdate,
+}: Props) {
   const [zones, setZones] = useState<Zone[]>([]);
   const [populations, setPopulations] = useState<Population[]>([]);
-  const [selectedZone, setSelectedZone] = useState<number | string>("");
+  const [selectedZoneId, setSelectedZoneId] = useState<number | string>("");
+  const [currentZone, setCurrentZone] = useState<Zone | null>(null);
+  const [currentPopulation, setCurrentPopulation] = useState<Population | null>(
+    null
+  );
 
   useEffect(() => {
     getAllZones().then((data: Zone[]) => {
       setZones(data);
       const defaultZone = data[0].id;
-      setSelectedZone(defaultZone);
+      setSelectedZoneId(defaultZone);
+      setCurrentZone(data[0]);
     });
   }, []);
 
   useEffect(() => {
-    if (selectedZone != "") {
-      getPopulations(Number(selectedZone)).then((populationsData) => {
-        setPopulations(populationsData);
-      });
+    if (!selectedZoneId) return;
+
+    getPopulations(Number(selectedZoneId)).then(populations => {
+      setPopulations(populations);
+      const newPop = populations.find(pop => pop.id === currPop) ?? populations[0];
+      setCurrPop(newPop.id);
+      setCurrentPopulation(newPop);
+    });
+  }, [selectedZoneId, currPop,setCurrPop]);
+
+
+  useEffect(() => {
+    if (onSelectionUpdate) {
+      onSelectionUpdate(currentZone, currentPopulation);
     }
-  }, [selectedZone]);
+  }, [currentZone, currentPopulation, onSelectionUpdate]);
 
   const handleZoneChange = async (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     const zoneId = event.target.value;
-    setSelectedZone(zoneId);
-    console.log("Zona seleccionada:", zoneId);
+    setSelectedZoneId(zoneId);
+
+    const zone = zones.find((zone) => zone.id === Number(zoneId));
+    if (zone) {
+      setCurrentZone(zone);
+    }
 
     if (zoneId) {
       const populationsData = await getPopulations(Number(zoneId));
-      console.log(populationsData);
       setPopulations(populationsData);
+
+      if (populationsData.length > 0) {
+        setCurrPop(populationsData[0].id);
+        setCurrentPopulation(populationsData[0]);
+      } else {
+        setCurrentPopulation(null);
+      }
     } else {
       setPopulations([]);
+      setCurrentPopulation(null);
+    }
+  };
+
+  const handlePopulationChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const popId = Number(event.target.value);
+    setCurrPop(popId);
+
+    const pop = populations.find((p) => p.id === popId);
+    if (pop) {
+      setCurrentPopulation(pop);
     }
   };
 
@@ -53,7 +98,7 @@ export default function HeaderList({ setCurrPop, currPop }: Props) {
             style={{ fontSize: "60px", color: "#4E5283", fontWeight: "bold" }}
             className="offset-1"
           >
-            EVALUADOS
+            DASHBOARD
           </h1>
         </div>
         <hr />
@@ -61,17 +106,12 @@ export default function HeaderList({ setCurrPop, currPop }: Props) {
           id="select-zona"
           className="col-lg-3 w-auto row d-flex align-items-center mt-4"
         >
-          <Link to={"/new_person"} className="btn col-2 mx-3">
-            <button id="add-btn" className="btn w-100">
-              Nuevo Evaluado
-            </button>
-          </Link>
           <select
             name="zone"
             id="zone"
-            className="col-2 offset-4"
+            className="col-2 offset-7"
             style={{ height: "30px" }}
-            value={selectedZone}
+            value={selectedZoneId}
             onChange={handleZoneChange}
           >
             {zones.map((zone, index) => (
@@ -86,9 +126,7 @@ export default function HeaderList({ setCurrPop, currPop }: Props) {
             id="population"
             className="col-2 offset-1"
             value={currPop}
-            onChange={(e) => {
-              setCurrPop(Number(e.target.value));
-            }}
+            onChange={handlePopulationChange}
             style={{ height: "30px" }}
           >
             {populations.map((population, index) => (

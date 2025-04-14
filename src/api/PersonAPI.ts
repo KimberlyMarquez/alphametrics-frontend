@@ -95,3 +95,51 @@ export const updatePerson = async (id: number, personData) => {
     console.log(error);
   }
 };
+
+export const getStatusPercentageByPopulation = async (populationId: number) => {
+  try {
+    const res = await api.get("/person/getstatuspercentage", {
+      params: { populationId },
+    });
+    return res.data.payload;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const getLevelAlert = async (populationId: number) => {
+  try {
+    const res = await api.get("/person/getalertlevel", {
+      params: { populationId },
+    });
+    return res.data.payload;
+  } catch (error) {
+    console.log(error);
+    return "";
+  }
+};
+
+export const getTotalPeople = async (populationId: number) => {
+  try {
+    const res = await api.get("/person/gettotal", {
+      params: { populationId },
+    });
+    return res.data.payload;
+  } catch (error) {
+    console.log(error);
+    return 0;
+  }
+};
+
+export const getGenderStats = async (populationId: number) => {
+  try {
+    const res = await api.get("/person/getgenderstats", {
+      params: { populationId },
+    });
+    return res.data.payload;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};

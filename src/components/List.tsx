@@ -11,7 +11,7 @@ export default function List({ people, onDelete }: Props) {
 
   return (
     <>
-      <div id="tabla" className="offset-1 mt-5 me-5">
+      <div id="tabla" className="mt-3 me-5">
         <table className="table table-hover text-center align-middle">
           <thead>
             <tr className="table-active">

@@ -44,10 +44,11 @@ export default function NewElement() {
 
   return (
     <>
-      <main className="col-lg-10 d-block" id="main">
-        <div id="title" className="mt-lg-5 offset-1 mt-3">
+      <main className="col-lg-10 d-block mt-3" id="main">
+        <div id="title" className="mt-lg-5 mt-3">
           <h1
             style={{ fontSize: "60px", color: "#4E5283", fontWeight: "bold" }}
+            className="offset-1"
           >
             NUEVO EVALUADO
           </h1>
@@ -136,7 +137,7 @@ export default function NewElement() {
                   onChange={() => setStatus(false)}
                 />
                 <label className="form-check-label" htmlFor="reprobado">
-                  Reprobado
+                  No Graduado
                 </label>
               </div>
             </div>

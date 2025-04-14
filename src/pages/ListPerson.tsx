@@ -19,9 +19,11 @@ export default function ListPerson() {
   }, [currPop]);
 
   return (
-    <main className="col-lg-10 d-block" id="main">
+    <div className="list-container">
       <HeaderList currPop={currPop} setCurrPop={setCurrPop} />
-      <List people={people} onDelete={deleteHandler} />
-    </main>
+      <div className="list-content">
+        <List people={people} onDelete={deleteHandler} />
+      </div>
+    </div>
   );
 }

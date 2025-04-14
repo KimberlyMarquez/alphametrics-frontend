@@ -36,14 +36,14 @@ export default function HeaderDashboard({
   useEffect(() => {
     if (!selectedZoneId) return;
 
-    getPopulations(Number(selectedZoneId)).then(populations => {
-      setPopulations(populations);
-      const newPop = populations.find(pop => pop.id === currPop) ?? populations[0];
+    getPopulations(Number(selectedZoneId)).then((data) => {
+      setPopulations(data);
+      const newPop =
+        populations.find((pop) => pop.id === currPop) ?? populations[0];
       setCurrPop(newPop.id);
       setCurrentPopulation(newPop);
     });
-  }, [selectedZoneId, currPop,setCurrPop]);
-
+  }, [selectedZoneId, currPop, setCurrPop, populations]);
 
   useEffect(() => {
     if (onSelectionUpdate) {

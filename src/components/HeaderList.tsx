@@ -25,9 +25,12 @@ export default function HeaderList({ setCurrPop, currPop }: Props) {
     if (selectedZone != "") {
       getPopulations(Number(selectedZone)).then((populationsData) => {
         setPopulations(populationsData);
+        const newPop =
+          populations.find((pop) => pop.id === currPop) ?? populations[0];
+        setCurrPop(newPop.id);
       });
     }
-  }, [selectedZone]);
+  }, [selectedZone, currPop, populations, setCurrPop]);
 
   const handleZoneChange = async (
     event: React.ChangeEvent<HTMLSelectElement>

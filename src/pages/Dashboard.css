@@ -5,6 +5,10 @@
     
 }
 
+#body{
+    overflow: hidden;
+}
+
 h5{
     font-size: 24px;
 }

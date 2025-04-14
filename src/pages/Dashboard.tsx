@@ -5,7 +5,7 @@ import "./Dashboard.css";
 
 export default function Dashboard() {
     return (
-        <div className="container-fluid dashboard-container vh-100 gx-0 overflow-auto">
+        <div id="body" className="container-fluid dashboard-container vh-100 gx-0 overflow-auto">
             <div className="row">
                 <div className="col-lg-3 d-flex flex-column gap-3 mt-4">
                     <div className="card flex-fill shadow" style={{ backgroundColor: '#A8ADE8'}}>

@@ -27,9 +27,11 @@ export default function HeaderDashboard({
   useEffect(() => {
     getAllZones().then((data: Zone[]) => {
       setZones(data);
-      const defaultZone = data[0].id;
-      setSelectedZoneId(defaultZone);
-      setCurrentZone(data[0]);
+      if (data.length > 0) {
+        const defaultZone = data[0];
+        setSelectedZoneId(defaultZone.id);
+        setCurrentZone(defaultZone);
+      }
     });
   }, []);
 
@@ -38,44 +40,29 @@ export default function HeaderDashboard({
 
     getPopulations(Number(selectedZoneId)).then((data) => {
       setPopulations(data);
-      const newPop =
-        populations.find((pop) => pop.id === currPop) ?? populations[0];
-      setCurrPop(newPop.id);
-      setCurrentPopulation(newPop);
+      if (data.length > 0) {
+        setCurrPop(data[0].id);
+        setCurrentPopulation(data[0]);
+      } else {
+        setCurrentPopulation(null);
+      }
+
+      const zone = zones.find((z) => z.id === Number(selectedZoneId));
+      if (zone) {
+        setCurrentZone(zone);
+      }
     });
-  }, [selectedZoneId, currPop, setCurrPop, populations]);
+  }, [selectedZoneId]);
 
   useEffect(() => {
     if (onSelectionUpdate) {
       onSelectionUpdate(currentZone, currentPopulation);
     }
-  }, [currentZone, currentPopulation, onSelectionUpdate]);
+  }, [currentZone, currentPopulation]);
 
-  const handleZoneChange = async (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
+  const handleZoneChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const zoneId = event.target.value;
     setSelectedZoneId(zoneId);
-
-    const zone = zones.find((zone) => zone.id === Number(zoneId));
-    if (zone) {
-      setCurrentZone(zone);
-    }
-
-    if (zoneId) {
-      const populationsData = await getPopulations(Number(zoneId));
-      setPopulations(populationsData);
-
-      if (populationsData.length > 0) {
-        setCurrPop(populationsData[0].id);
-        setCurrentPopulation(populationsData[0]);
-      } else {
-        setCurrentPopulation(null);
-      }
-    } else {
-      setPopulations([]);
-      setCurrentPopulation(null);
-    }
   };
 
   const handlePopulationChange = (

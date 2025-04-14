@@ -25,27 +25,17 @@ export default function HeaderList({ setCurrPop, currPop }: Props) {
     if (selectedZone != "") {
       getPopulations(Number(selectedZone)).then((populationsData) => {
         setPopulations(populationsData);
-        const newPop =
-          populations.find((pop) => pop.id === currPop) ?? populations[0];
-        setCurrPop(newPop.id);
+        if (populationsData.length > 0) {
+          setCurrPop(populationsData[0].id);
+          console.log("werwer")
+        }
       });
     }
-  }, [selectedZone, currPop, populations, setCurrPop]);
+  }, [selectedZone, setCurrPop]);
 
-  const handleZoneChange = async (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
+  const handleZoneChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const zoneId = event.target.value;
     setSelectedZone(zoneId);
-    console.log("Zona seleccionada:", zoneId);
-
-    if (zoneId) {
-      const populationsData = await getPopulations(Number(zoneId));
-      console.log(populationsData);
-      setPopulations(populationsData);
-    } else {
-      setPopulations([]);
-    }
   };
 
   return (

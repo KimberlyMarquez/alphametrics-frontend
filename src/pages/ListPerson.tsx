@@ -1,5 +1,5 @@
-import HeaderList from "./HeaderList";
-import List from "./List";
+import HeaderList from "../components/HeaderList";
+import List from "../components/List";
 import { getPeopleByPopulation, deletePerson } from "../api/PersonAPI";
 import { useEffect, useState } from "react";
 import { Person } from "my-types";

@@ -1,21 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import ListPerson from "../components/ListPerson";
+import ListPerson from "../pages/ListPerson";
 import Error from "../components/Error";
-import NewElement from "../components/NewElement";
-import EditElement from "../components/EditElement";
+import NewElement from "../pages/NewElement";
+import EditElement from "../pages/EditElement";
 
 import Dashboard from "../pages/Dashboard";
 
 const router = createBrowserRouter([
   {
-    path: "/dashboard",
+    path: "/",
     element: <App />,
     errorElement: <Error />,
     children: [
       {
         index: true,
-        element: <Dashboard />
+        element: <Dashboard />,
       },
       {
         path: "/people",

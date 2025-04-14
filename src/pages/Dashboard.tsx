@@ -1,11 +1,11 @@
 import LineGraduatesChart from "../components/LineGraduatesChart";
 import PieGenderChart from "../components/PieGenderChart";
-import "./Dashboard.css";
+import "../styles/Dashboard.css";
 
 
 export default function Dashboard() {
     return (
-        <div id="body" className="container-fluid dashboard-container vh-100 gx-0 overflow-auto">
+        <main id="body" className="dashboard-container vh-100 gx-0 overflow-auto">
             <div className="row">
                 <div className="col-lg-3 d-flex flex-column gap-3 mt-4">
                     <div className="card flex-fill shadow" style={{ backgroundColor: '#A8ADE8'}}>
@@ -37,7 +37,7 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
-    
+
             {/* SECOND ROW*/}
 
             <div className="row d-lg-flex">
@@ -68,7 +68,6 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     );
 }
-  

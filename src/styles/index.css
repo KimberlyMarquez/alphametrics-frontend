@@ -119,6 +119,9 @@ tfoot:last-child td {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 180px;
+  min-width: 180px;
+  max-width: 180px;
 }
 
 #add-btn:hover {
@@ -143,6 +146,13 @@ tfoot:last-child td {
   height: 40px;
   font-size: 1.2rem;
   align-items: center;
+}
+
+.select-zona-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 /* Media Queries */
@@ -188,8 +198,15 @@ tfoot:last-child td {
     flex-direction: row;
     justify-content: space-between;
     padding: 0.5rem 1rem;
+    align-items: center;
   }
 
+  .profile-container {
+    margin-top: 0;
+    padding-bottom: 0;
+    align-self: center;
+  }
+  
   .nav-links {
     flex-direction: row;
     margin-top: 0;

@@ -79,27 +79,10 @@ export default function Dashboard() {
           <div className="col-lg-3 d-flex flex-column gap-3 mt-4">
             <div
               className="card flex-fill shadow"
-              style={{ backgroundColor: "#A8ADE8" }}
-            >
-              <div
-                className="card-body d-flex flex-column justify-content-center align-items-center text-center"
-                style={{ color: "#4D528A" }}
-              >
-                <h5 className="mb-2">Población</h5>
-                <div className="d-flex justify-content-center gap-2">
-                  <p className="mb-0 text-white">Edad:</p>
-                  <p className="mb-0 text-white">
-                    {selectedPopulation ? selectedPopulation.age : "N/A"}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="card flex-fill"
               style={{ backgroundColor: "#95CBF8" }}
             >
               <div
-                className="card-body d-lg-flex justify-content-lg-center align-items-lg-center text-center"
+                className="card-body d-lg-flex  flex-column justify-content-lg-center align-items-lg-center text-center"
                 style={{ color: "#486883" }}
               >
                 <div>
@@ -115,6 +98,27 @@ export default function Dashboard() {
                   </div>
                 </div>
               </div>
+
+            </div>
+
+            <div
+              className="card flex-fill shadow"
+              style={{ backgroundColor: "#A8ADE8" }}
+            >
+
+              <div
+                className="card-body d-lg-flex flex-column justify-content-center align-items-center text-center"
+                style={{ color: "#4D528A" }}
+              >
+                <h5 className="mb-2">Población</h5>
+                <div className="d-flex justify-content-center gap-2">
+                  <p className="mb-0 text-white">Edad:</p>
+                  <p className="mb-0 text-white">
+                    {selectedPopulation ? selectedPopulation.age : "N/A"}
+                  </p>
+                </div>
+              </div>
+
             </div>
           </div>
 

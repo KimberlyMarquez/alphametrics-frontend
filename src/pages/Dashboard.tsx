@@ -142,9 +142,14 @@ export default function Dashboard() {
           <div className="col-lg-3 mt-4">
             <div className="card shadow h-100">
               <div className="card-body d-lg-flex justify-content-lg-center align-items-lg-center text-center">
-                <div>
-                  <h5>Total de Evaluados</h5>
-                  <p>{total}</p>
+                <div id="total-style">
+                  <div id="text"> 
+                  <h5 style={{ fontSize: "32px", fontWeight: "bold", marginBottom:"0"}}>TOTAL DE</h5>
+                  <p style={{ fontSize: "24px", fontWeight: "bold" }}> EVALUADOS</p>
+                  </div>
+                  <p style={{ fontSize: "64px", fontWeight: "bold", color:"#95CBF8" }}>{/*total*/}
+                    100
+                  </p>
                 </div>
               </div>
             </div>

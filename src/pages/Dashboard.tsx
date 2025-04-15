@@ -147,8 +147,8 @@ export default function Dashboard() {
                   <h5 style={{ fontSize: "32px", fontWeight: "bold", marginBottom:"0"}}>TOTAL DE</h5>
                   <p style={{ fontSize: "24px", fontWeight: "bold" }}> EVALUADOS</p>
                   </div>
-                  <p style={{ fontSize: "64px", fontWeight: "bold", color:"#95CBF8" }}>{/*total*/}
-                    100
+                  <p style={{ fontSize: "64px", fontWeight: "bold", color:"#95CBF8" }}>
+                    {total}
                   </p>
                 </div>
               </div>

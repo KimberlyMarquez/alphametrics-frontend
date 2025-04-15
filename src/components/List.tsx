@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Person } from "my-types";
 import { useNavigate } from "react-router-dom";
+import DeleteModal from "./DeleteModal";
 
 type Props = {
   people: Person[];
@@ -7,6 +9,7 @@ type Props = {
 };
 
 export default function List({ people, onDelete }: Props) {
+  const [personToDelete, setPersonToDelete] = useState<Person | null>(null);
   const navigate = useNavigate();
 
   return (
@@ -43,11 +46,11 @@ export default function List({ people, onDelete }: Props) {
                 <td>{people.gender}</td>
                 <td>{people.status ? "Graduado" : "No Graduado"}</td>
                 <th scope="row">
-                  <button
+                  <button 
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModalCenter"
                     style={{ border: "0", backgroundColor: "transparent" }}
-                    onClick={() => {
-                      onDelete(people.id);
-                    }}
+                    onClick={() => setPersonToDelete(people)}
                   >
                     <img
                       src="img/trash_icon.png"
@@ -69,6 +72,10 @@ export default function List({ people, onDelete }: Props) {
           </tbody>
         </table>
       </div>
+
+      <DeleteModal person={personToDelete} onDeleteConfirm={() => {
+        if (personToDelete) onDelete(personToDelete.id);
+      }} />
     </>
   );
 }

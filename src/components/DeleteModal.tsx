@@ -9,11 +9,11 @@ type Props = {
 export default function DeleteModal( {person, onDeleteConfirm }: Props ){
     return(
       <>
-        <div className="modal fade" id="exampleModalCenter" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+        <div className="modal fade" id="deletePersonModal" role="dialog" aria-labelledby="deletePersonModalLabel" aria-hidden="true" >
             <div className="modal-dialog modal-dialog-centered" role="document">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLongTitle">Confirmar eliminación</h5>
+                        <h5 className="modal-title" id="deletePersonModalLabel">Confirmar eliminación</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true"></span>
                         </button>

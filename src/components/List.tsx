@@ -48,7 +48,7 @@ export default function List({ people, onDelete }: Props) {
                 <th scope="row">
                   <button 
                     data-bs-toggle="modal"
-                    data-bs-target="#exampleModalCenter"
+                    data-bs-target="#deletePersonModal"
                     style={{ border: "0", backgroundColor: "transparent" }}
                     onClick={() => setPersonToDelete(people)}
                   >

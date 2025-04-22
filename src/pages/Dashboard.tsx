@@ -22,6 +22,11 @@ type GenderStats = {
   value: number;
 }[];
 
+type Alert = {
+  level: string;
+  color: string;
+};
+
 export default function Dashboard() {
   const [currPop, setCurrPop] = useState<number>(1);
   const [selectedZone, setSelectedZone] = useState<Zone | null>(null);
@@ -30,7 +35,10 @@ export default function Dashboard() {
   const [status, setStatus] = useState<StatusPercentage>([
     { name: "-", graduados: 0, noGraduados: 0 },
   ]);
-  const [level, setLevel] = useState<string>("AAA");
+  const [level, setLevel] = useState<Alert>({
+    level: "",
+    color: "",
+  });
   const [total, setTotal] = useState<number>(0);
   const [genderStats, setGenderStats] = useState<GenderStats>([
     {
@@ -47,7 +55,7 @@ export default function Dashboard() {
     getStatusPercentageByPopulation(currPop).then((data: StatusPercentage) => {
       setStatus(data);
     });
-    getLevelAlert(currPop).then((data: string) => {
+    getLevelAlert(currPop).then((data: Alert) => {
       setLevel(data);
     });
     getTotalPeople(currPop).then((data: number) => {
@@ -98,14 +106,12 @@ export default function Dashboard() {
                   </div>
                 </div>
               </div>
-
             </div>
 
             <div
               className="card flex-fill shadow"
               style={{ backgroundColor: "#A8ADE8" }}
             >
-
               <div
                 className="card-body d-lg-flex flex-column justify-content-center align-items-center text-center"
                 style={{ color: "#4D528A" }}
@@ -118,7 +124,6 @@ export default function Dashboard() {
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
 
@@ -136,10 +141,10 @@ export default function Dashboard() {
           <div className="col-lg-3 mt-4">
             <div
               className="card shadow h-100"
-              style={{ backgroundColor: "#49D49D", color: "#FFFFFF" }}
+              style={{ backgroundColor: level.color, color: "#FFFFFF" }}
             >
               <div className="card-body d-lg-flex justify-content-lg-center align-items-lg-center text-center">
-                <h5 id="Alerta">{level}</h5>
+                <h5 id="Alerta">{level.level}</h5>
               </div>
             </div>
           </div>
@@ -147,11 +152,28 @@ export default function Dashboard() {
             <div className="card shadow h-100">
               <div className="card-body d-lg-flex justify-content-lg-center align-items-lg-center text-center">
                 <div id="total-style">
-                  <div id="text"> 
-                  <h5 style={{ fontSize: "32px", fontWeight: "bold", marginBottom:"0"}}>TOTAL DE</h5>
-                  <p style={{ fontSize: "24px", fontWeight: "bold" }}> EVALUADOS</p>
+                  <div id="text">
+                    <h5
+                      style={{
+                        fontSize: "32px",
+                        fontWeight: "bold",
+                        marginBottom: "0",
+                      }}
+                    >
+                      TOTAL DE
+                    </h5>
+                    <p style={{ fontSize: "24px", fontWeight: "bold" }}>
+                      {" "}
+                      EVALUADOS
+                    </p>
                   </div>
-                  <p style={{ fontSize: "64px", fontWeight: "bold", color:"#95CBF8" }}>
+                  <p
+                    style={{
+                      fontSize: "64px",
+                      fontWeight: "bold",
+                      color: "#95CBF8",
+                    }}
+                  >
                     {total}
                   </p>
                 </div>

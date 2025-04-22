@@ -52,10 +52,10 @@ export default function HeaderList({ setCurrPop, currPop }: Props) {
         <hr />
         <div
           id="select-zona"
-          className="col-lg-3 w-auto row d-flex align-items-center mt-4"
+          className="col-lg-6 w-auto d-flex justify-content-end align-items-center mt-4 me-4"
         >
           <Link to={"/new_person"} className="btn col-2 mx-3">
-            <button id="add-btn" className="btn w-100">
+            <button id="add-btn" className="btn">
               Nuevo Evaluado
             </button>
           </Link>

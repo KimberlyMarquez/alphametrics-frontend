@@ -119,6 +119,9 @@ tfoot:last-child td {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 180px;
+  min-width: 180px;
+  max-width: 180px;
 }
 
 #add-btn:hover {

@@ -117,7 +117,7 @@ export default function HeaderDashboard({
               <option
                 key={index}
                 value={population.id}
-              >{`ID: ${population.id}, Edad: ${population.age} anios`}</option>
+              >{`ID: ${population.id}, Edad: ${population.age} años`}</option>
             ))}
           </select>
         </div>

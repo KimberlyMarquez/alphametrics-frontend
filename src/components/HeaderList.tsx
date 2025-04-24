@@ -27,7 +27,7 @@ export default function HeaderList({ setCurrPop, currPop }: Props) {
         setPopulations(populationsData);
         if (populationsData.length > 0) {
           setCurrPop(populationsData[0].id);
-          console.log("werwer")
+          console.log("werwer");
         }
       });
     }
@@ -88,7 +88,7 @@ export default function HeaderList({ setCurrPop, currPop }: Props) {
               <option
                 key={index}
                 value={population.id}
-              >{`ID: ${population.id}, Edad: ${population.age} anios`}</option>
+              >{`ID: ${population.id}, Edad: ${population.age} años`}</option>
             ))}
           </select>
         </div>

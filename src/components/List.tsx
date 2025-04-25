@@ -22,7 +22,7 @@ export default function List({ people, onDelete }: Props) {
               <th scope="col">Nombre</th>
               <th scope="col">CURP</th>
               <th scope="col">Genero</th>
-              <th scope="col">Status</th>
+              <th scope="col">Estatus</th>
               <th scope="col"></th>
               <th scope="col"></th>
             </tr>
@@ -46,7 +46,7 @@ export default function List({ people, onDelete }: Props) {
                 <td>{people.gender}</td>
                 <td>{people.status ? "Graduado" : "No Graduado"}</td>
                 <th scope="row">
-                  <button 
+                  <button
                     data-bs-toggle="modal"
                     data-bs-target="#deletePersonModal"
                     style={{ border: "0", backgroundColor: "transparent" }}
